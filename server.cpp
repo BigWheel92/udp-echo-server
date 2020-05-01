@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
    
     cout<<"Data Received from client ("<<inet_ntoa(client.sin_addr)<<"):  "<<messageBuffer<<endl<<endl;
 	 
-    if (sendto(sock_fd, (void*) messageBuffer, (size_t) strlen(messageBuffer)+1, MSG_CONFIRM, (sockaddr*) &client, (socklen_t) len)==-1)
+    if (sendto(sock_fd, (void*) messageBuffer, (size_t) strlen(messageBuffer)+1, 0, (sockaddr*) &client, (socklen_t) len)==-1)
     {
       perror("sendto: ");
       continue;
