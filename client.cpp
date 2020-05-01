@@ -14,13 +14,11 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-
   if (argc< 3)
   {
      cout<<"Please pass the ip adress and port number on which the server is listening."<<endl;
      exit(-1);
   }
-  
   
   sockaddr_in server;
   int sock_fd;
@@ -35,8 +33,7 @@ int main(int argc, char *argv[])
   server.sin_port= htons(atoi(argv[2]));
   server.sin_addr.s_addr= inet_addr(argv[1]);;
   bzero(&server.sin_zero, 8);
-
-
+  
   char messageBuffer[MAX_STRING_LENGTH+1]="";
   char serverReply[MAX_STRING_LENGTH+1]="";
   int len=0;
@@ -49,7 +46,6 @@ int main(int argc, char *argv[])
      if (strcmp(messageBuffer, "exit")==0)
       break;
     
-   
      if (sendto(sock_fd, (void*) messageBuffer, (size_t) strlen(messageBuffer)+1, 0, (sockaddr *) &server, sizeof(server))==-1)
      {
       perror("sendto: ");
