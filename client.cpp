@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
       continue;
      } 
 
-     if (recvfrom(sock_fd, (void*) serverReply, (size_t) MAX_STRING_LENGTH+1, 0, (sockaddr *) &server, (socklen_t*) &len)==-1)
+     if (recvfrom(sock_fd, (void*) serverReply, (size_t) (MAX_STRING_LENGTH+1), MSG_WAITALL, (sockaddr *) &server, (socklen_t*) &len)==-1)
      {
       perror("recvfrom:");
       continue;
